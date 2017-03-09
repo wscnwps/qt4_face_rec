@@ -1,0 +1,4 @@
+#define FaceRecLib_MAJOR_VERSION (@FaceRecLib_MAJOR_VERSION@)
+#define FaceRecLib_MINOR_VERSION (@FaceRecLib_MINOR_VERSION@)
+#define FaceRecLib_PATCH_VERSION (@FaceRecLib_PATCH_VERSION@)
+#define FaceRecLib_VERSION_STRING "@FaceRecLib_VERSION@"
