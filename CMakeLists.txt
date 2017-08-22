@@ -15,7 +15,7 @@ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})  # This line is to include QT intermediate head files.
 #QT source files
 SET(qt_HEADERS gui/mainwindow.h gui/mainwidget.h  gui/imageviewer.h src/camera.h src/face_processor.h)
-#SET(qt_FORMS gui/mainwidget.ui)
+SET(qt_FORMS gui/mainwidget.ui)
 #SET(qt_RESOURCES face_demo.qrc)
 QT4_WRAP_CPP(qt_HEADERS_MOC ${qt_HEADERS})
 QT4_WRAP_UI(qt_FORMS_HEADERS ${qt_FORMS})

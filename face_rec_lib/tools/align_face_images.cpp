@@ -43,16 +43,19 @@ void getAllFiles(const fs::path &root, const string &ext,
 }
 
 int main(int argc, char **argv) {
-    // Initial face feature extractor and face aligner
-    FaceFeature feature_extractor(
-                "/home/robert/myCoding/face/face_feature_cnn_models/vgg_face/vgg_face_caffe/VGG_FACE_deploy.prototxt", "/home/robert/myCoding/face/face_feature_cnn_models/vgg_face/vgg_face_caffe/VGG_FACE.caffemodel", "fc7");
-    //FaceFeature feature_extractor(
-                //"../../models/cnn_smallnet/small.prototxt", "../../models/cnn_smallnet/small.caffemodel", "prob");
-    FaceAlign face_align(
-                "../../models/dlib_shape_predictor_68_face_landmarks.dat");
+    string root = "../../";
+    // Path to model files
+    string caffe_prototxt = root + "./models/cnn/LightenedCNN_B_deploy.prototxt";
+    string caffe_model = root + "./models/cnn/LightenedCNN_B.caffemodel";
+    string caffe_feature_layer_name = "eltwise_fc1";
+    string align_model = root + "./models/dlib_shape_predictor_68_face_landmarks.dat";
     // Path to image root.
-    string image_root("./images");
+    string image_root(root + "./images");
     string ext(".jpg");
+    // Initial face feature extractor and face aligner
+    FaceFeature feature_extractor(caffe_prototxt, caffe_model,
+            caffe_feature_layer_name);
+    FaceAlign face_align(align_model);
 
     vector<fs::path> file_path;
     getAllFiles(fs::path(image_root), ext, file_path);
@@ -67,7 +70,7 @@ int main(int argc, char **argv) {
     // Detect face, then save to the disk.
     cout<<"Image(s):"<<endl;
     for (int i = 0; i < N; i++) {
-        cout<<file_path[i]<<endl;
+        cout<<i+1<<"/"<<N<<": "<<file_path[i]<<endl;
         Mat face = imread(file_path[i].string());
         Mat face_cropped;
         Rect face_detect;

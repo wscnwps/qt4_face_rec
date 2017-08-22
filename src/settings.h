@@ -1,6 +1,7 @@
 #ifndef SETTINGS_H
 #define SETTINGS_H
 // Better to use a config file instead of this setting file.
+// Also add a dirty mark of the repository, corresponding to FaceProcesser::_face_repo_is_dirty.
 
 #include <string>
 

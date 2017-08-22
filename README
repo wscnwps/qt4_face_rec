@@ -1,0 +1,27 @@
+FACE RECOGNITION DEMO
+Face detection and alignment are based on dlib[1]. Face feature model is based on LightenedCNN[2] and trained by Caffe[3].
+
+FUNCTION
+1. Face register. Register current face in front of the camera into the face repository.
+2. Face verification. Specify a name and verifcate the face in front of the camera with the registered faces with the name.
+3. Face recognition. Detect face in front of the camera and retrieve its neaest neighbors in the face repository. Also give the similarity of the nearest neighbors.
+
+BUILD
+Prerequisite: CMake, Caffe, dlib, QT4, FLANN, Boost, OpenCV
+sudo apt install libboost1.58-dev libflann-dev libqt4-dev libdlib-dev cmake
+Install Caffe first, then
+    mkdir build; cd build; cmake ..; make -j4
+Sometimes we need to avoid cuda problem.
+    cmake -DCUDA_USE_STATIC_CUDA_RUNTIME=OFF -DCMAKE_BUILD_TYPE=Release ..
+
+RUN
+Simple start by
+    cd build; ./face_demo
+Then you can register face one by one. 
+Or you can copy some face images into "images/" directory. One folder for each person. You need to wait for a while with a large number of images.
+If any change (add or delete a face) has made, the program will re-index the entire face repository before close. So please wait the program end itself after press close button. Donot kill the progress, or you may loss the change.
+
+
+[1] http://dlib.net/
+[2] Wu X, He R, Sun Z. A lightened cnn for deep face representation. arXiv preprint[J]. arXiv preprint arXiv:1511.02683. 2015, 4.
+[3] http://caffe.berkeleyvision.org/

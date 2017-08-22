@@ -62,7 +62,7 @@ MainWidget::MainWidget(QWidget *parent) :
     QHBoxLayout* nameLayout = new QHBoxLayout();
     QLabel* nameLabel = new QLabel("Name or phone number (unique):", this);
     _name_LineEdit = new QLineEdit(this);
-    QValidator *nameValidator = new QRegExpValidator(QRegExp("^[a-zA-Z0-9]+$"), this );
+    QValidator *nameValidator = new QRegExpValidator(QRegExp("^[a-zA-Z0-9_-]+$"), this );
     _name_LineEdit->setValidator(nameValidator);
     nameLayout->addWidget(nameLabel);
     nameLayout->addWidget(_name_LineEdit);
