@@ -8,20 +8,20 @@ FUNCTION
 
 BUILD
 Prerequisite: CMake, Caffe, dlib, QT4, FLANN, Boost, OpenCV
-sudo apt install libboost1.58-dev libflann-dev libqt4-dev libdlib-dev cmake
+sudo apt install libboost1.xx-dev libflann-dev libqt4-dev libdlib-dev cmake
 Install Caffe first, then
     mkdir build; cd build; cmake ..; make -j4
 Sometimes we need to avoid cuda problem.
     cmake -DCUDA_USE_STATIC_CUDA_RUNTIME=OFF -DCMAKE_BUILD_TYPE=Release ..
 
 RUN
-1. Download model from https://pan.baidu.com/s/1o8MDzn0
-2. Unzip the model file to source tree
+1. (Download model from https://pan.baidu.com/s/1o8MDzn0) Aready included.
+2. Unzip the model file to source tree.
 3. Simple start by
     cd build; ./face_demo
 Then you can register face one by one. 
 Or you can copy some face images into "images/" directory. One folder for each person. You need to wait for a while with a large number of images.
-If any change (add or delete a face) has made, the program will re-index the entire face repository before close. So please wait the program endstself after press close button. Donot kill the progress, or you may loss the change.
+If any change (add or delete a face) has made, the program will re-index the entire face repository before close. So please wait the program ends itself after press close button. Donot kill the progress, or you may loss the change.
 
 [1] http://dlib.net/
 [2] Wu X, He R, Sun Z. A lightened cnn for deep face representation. arXiv preprint[J]. arXiv preprint arXiv:1511.02683. 2015, 4.
